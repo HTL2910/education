@@ -9,6 +9,9 @@ TagManager:
   - OuterCorner
   - Room
   - Door
+  - Dialog
+  - A
+  - B
   layers:
   - Default
   - TransparentFX

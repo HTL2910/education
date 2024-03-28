@@ -17,13 +17,24 @@ namespace KTintercativeProp
         public AudioClip sound_B;
 
         AudioSource audioSource;
-
+        
         // Start is called before the first frame update
         void Start()
         {
             activate = false;
             audioSource = GetComponent<AudioSource>();
-            animator.Play("A");
+            if(gameObject.tag=="A")
+            {
+                animator.Play("A");
+                toggleState = false;
+            }    
+            else if(gameObject.tag=="B")
+            {
+                animator.Play("B");
+            }
+            {
+                Debug.LogWarning("Not have animator");
+            }    
         }
 
         // Update is called once per frame
