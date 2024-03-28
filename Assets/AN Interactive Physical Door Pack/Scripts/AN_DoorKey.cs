@@ -20,7 +20,7 @@ public class AN_DoorKey : MonoBehaviour
 
     void Update()
     {
-        if ( NearView() && Input.GetKeyDown(KeyCode.E) )
+        if ( NearView() && Input.GetKeyDown(KeyCode.G) )
         {
             if (isRedKey) hero.RedKey = true;
             else hero.BlueKey = true;

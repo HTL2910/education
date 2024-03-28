@@ -10,10 +10,14 @@ public class Door_Properties : MonoBehaviour
 
     void Update()
     {
+        InputNear(KeyCode.E);
+    }
+    protected virtual void InputNear(KeyCode keyCode)
+    {
         if (activate)
         {
             icon.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(keyCode))
             {
                 if (toggleState)
                 {
@@ -29,9 +33,9 @@ public class Door_Properties : MonoBehaviour
         {
             icon.SetActive(false);
         }
-    }
+    }    
 
-    private void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -39,7 +43,7 @@ public class Door_Properties : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
