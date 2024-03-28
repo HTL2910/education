@@ -7,6 +7,7 @@ namespace KTintercativeProp
 {
     public class LightProp : MonoBehaviour
     {
+        [Header("Light active near Player")]
         public bool activate;
         public bool toggleState;
         public GameObject icon;
@@ -14,7 +15,13 @@ namespace KTintercativeProp
 
         public Renderer lantern;
         public int uvCN;
-
+        [Header("Light in Start")]
+        [SerializeField] bool IsActive = true;
+        
+        private void Start()
+        {
+            lightObj.SetActive(IsActive);
+        }
         void Update()
         {
             if (activate)
