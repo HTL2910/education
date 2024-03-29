@@ -4307,7 +4307,7 @@ MonoBehaviour:
   name_inputField: {fileID: 2053227095}
   password_inputField: {fileID: 992108495}
   rightAdminlogin: 0
-  DialogFailedAdmin: {fileID: 0}
+  DialogFailedAdmin: {fileID: 1182105756}
   adminNotActive: {fileID: 21300000, guid: f4bb16d2b06233f488e6e0123a81b940, type: 3}
   adminActive: {fileID: 21300000, guid: 5326fc848dcd26f4d99a0df7052c67f3, type: 3}
   userMode: 1
