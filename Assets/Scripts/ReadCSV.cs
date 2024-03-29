@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System;
 using TMPro;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class ReadCSV : MonoBehaviour
 {
@@ -186,5 +187,9 @@ public class ReadCSV : MonoBehaviour
     {
         return dataHandler.LoadData();
     }
+    public void Menu()
+    {
+        SceneManager.LoadScene("Login");
+    }    
 
 }
