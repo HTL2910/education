@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -10,30 +11,13 @@ public class DataManager : MonoBehaviour
     [SerializeField] public List<QuizQuestion> ListquizQuestions = new List<QuizQuestion>();
     [Header("path file save")]
     public string dataSavePath;
-
-    [Header("UI")]
-    public GameObject panelLoading;
     private void Awake()
     {
         instance = this;
     }
-    private IEnumerator Delay(float  delay)
+    public IEnumerator Delay(float delay)
     {
-        yield return delay;
-        
+        yield return new WaitForSeconds(delay);
     }    
-    public void DelayInLoading()
-    {
-        if (panelLoading != null)
-        {
-            panelLoading.SetActive(true);
-            StartCoroutine(Delay(1f));
-            panelLoading.SetActive(false);
-        }
-        else
-        {
-            StartCoroutine(Delay(1f));
-        }
-
-    }
+   
 }

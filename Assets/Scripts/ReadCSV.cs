@@ -14,21 +14,31 @@ public class ReadCSV : MonoBehaviour
     
     
     private DataHandler dataHandler;
-
+    [Header("UI")]
+    public TextMeshProUGUI statusText;
+    public TextMeshProUGUI InfoText;
     public void StartReadingCSV()
     {
+        
         string fileId = GetFileIdFromUrl(urlInputField.text);
 
         if (fileId == null)
         {
-            Debug.LogError("Invalid Google Drive URL");
+            statusText.text = "Invalid Google Drive URL";
+            statusText.color = Color.red;
             return;
         }
+        else
+        {
+            statusText.text = "Google Drive URL Is valid";
+            statusText.color = Color.green;
+        }    
 
         // Tạo URL để tải xuống từ Google Drive
         downloadUrl = "https://drive.google.com/uc?id=" + fileId;
 
         StartCoroutine(DownloadCSV());
+       
     }
 
     private IEnumerator DownloadCSV()
@@ -123,34 +133,57 @@ public class ReadCSV : MonoBehaviour
     public void Save()
     {
         SaveQuizData(DataManager.instance.quizQuestions);
-        DataManager.instance.DelayInLoading();
+        string jsonData = File.ReadAllText(DataManager.instance.dataSavePath);
+        InfoText.text = jsonData;
+        if(!string.IsNullOrEmpty(jsonData) && jsonData != "[]")
+        {
+            statusText.color = Color.green;
+            statusText.text = "Save Data Success";
+        }
+        else
+        {
+            statusText.color = Color.red;
+            statusText.text = "Save Data Failed;";
+        }    
+        PlayerPrefs.SetString("dataPath", DataManager.instance.dataSavePath);
+        Debug.LogWarning(PlayerPrefs.GetString("dataPath"));
     }    
      
     public void SaveQuizData(List<QuizQuestion> quizData)
     {
-        Debug.Log("Save");
         dataHandler.SaveData(quizData);
     }
    
     public void Load()
     {
+      
         DataManager.instance.ListquizQuestions = LoadQuizData();
-        //foreach (var question in DataManager.instance.ListquizQuestions)
-        //{
-        //    Debug.Log("Question: " + question.question);
-        //    Debug.Log("Option A: " + question.optionA);
-        //    Debug.Log("Option B: " + question.optionB);
-        //    Debug.Log("Option C: " + question.optionC);
-        //    Debug.Log("Option D: " + question.optionD);
-        //    Debug.Log("Correct Answer: " + question.correctAnswer);
-        //    Debug.Log("-------------------------");
-        //}
-        DataManager.instance.DelayInLoading();
+        
+        if (DataManager.instance.ListquizQuestions.Count > 0 )
+        {
+            statusText.color = Color.green;
+            statusText.text = "Load Data Succes";
+            foreach (var question in DataManager.instance.ListquizQuestions)
+            {
+                InfoText.text = "Question: " + question.question +"\n"+
+                    "Option A: " + question.optionA + "\n" +
+                    "Option B: " + question.optionB + "\n" +
+                    "Option C: " + question.optionC + "\n" +
+                    "Option D: " + question.optionD + "\n" +
+                    "-------------------------";
+            }
+        }
+        else
+        {
+            statusText.color = Color.red;
+            statusText.text = "Load Data Failed";
+            InfoText.text = "";
+        }    
+       
     }
 
     public List<QuizQuestion> LoadQuizData()
     {
-        Debug.Log("Load");
         return dataHandler.LoadData();
     }
 
