@@ -12,12 +12,9 @@ public class GameManager :MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-    private void Start()
-    {
         if (File.Exists(PlayerPrefs.GetString("dataPath")))
         {
-            // ??c d? li?u t? t?p và chuy?n ??i thành danh sách câu h?i
+
             string jsonData = File.ReadAllText(PlayerPrefs.GetString("dataPath"));
             listQuizData = JsonConvert.DeserializeObject<List<QuizQuestion>>(jsonData);
         }
@@ -25,6 +22,6 @@ public class GameManager :MonoBehaviour
         {
             Debug.Log("Not dataPath");
         }
-
     }
+  
 }

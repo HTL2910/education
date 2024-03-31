@@ -7,5 +7,6 @@ public class Key_Properties : Door_Properties
    void Update()
    {
         base.InputNear(KeyCode.G);
-   }    
+   }
+   
 }

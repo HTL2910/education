@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,8 +22,9 @@ public class UIManager : MonoBehaviour
 
     public int indexQuestion = 0;
     public GameObject questionPanel;
+    
 
-
+    private AN_HeroInteractive player;
 
     private void Awake()
     {
@@ -30,12 +32,14 @@ public class UIManager : MonoBehaviour
     }
     void Start()
     {
+        player=FindObjectOfType<AN_HeroInteractive>();
         startTime = Time.time;
         AddOnClick();
         if (questionPanel.activeSelf)
         {
             questionPanel.SetActive(false);
         }    
+
     }
     public void AddOnClick()
     {
@@ -59,10 +63,18 @@ public class UIManager : MonoBehaviour
     {
         yourAnswer =button.GetComponentInChildren<TMP_Text>().text;
         Debug.Log("answer: "+yourAnswer);
-        if(yourAnswer.ToLower()==rightAnswer.ToLower())
+        questionPanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        if (yourAnswer.ToLower()==rightAnswer.ToLower())
         {
-            questionPanel.SetActive(false);
-            Debug.Log("Right answer");
+
+            player.RedKey = true;
+
+        }    
+        else
+        {
+            player.RedKey = false;
         }    
     }    
 }
