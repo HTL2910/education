@@ -147,7 +147,6 @@ public class ReadCSV : MonoBehaviour
             statusText.text = "Save Data Failed;";
         }    
         PlayerPrefs.SetString("dataPath", DataManager.instance.dataSavePath);
-        Debug.LogWarning(PlayerPrefs.GetString("dataPath"));
     }    
      
     public void SaveQuizData(List<QuizQuestion> quizData)
