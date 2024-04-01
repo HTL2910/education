@@ -22,7 +22,9 @@ public class UIManager : MonoBehaviour
 
     public int indexQuestion = 0;
     public GameObject questionPanel;
-    
+
+    public TextMeshProUGUI rightAnswerText;
+    public int countRightAnswer = 0;
 
     private AN_HeroInteractive player;
 
@@ -41,6 +43,7 @@ public class UIManager : MonoBehaviour
         }    
 
     }
+   
     public void AddOnClick()
     {
         AButton.onClick.AddListener(() => MyAnswer(AButton));
@@ -58,6 +61,7 @@ public class UIManager : MonoBehaviour
 
         // Hiển thị thời gian dưới dạng "00:00".
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        rightAnswerText.text="Điểm: "+ countRightAnswer+"/"+GameManager.instance.listQuizData.Count;
     }
     public void MyAnswer(Button button)
     {
@@ -68,7 +72,7 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
         if (yourAnswer.ToLower()==rightAnswer.ToLower())
         {
-
+            countRightAnswer += 1;
             player.RedKey = true;
 
         }    

@@ -23,7 +23,7 @@ public class AN_HeroInteractive : MonoBehaviour
     {
         if(other.CompareTag("Door"))
         {
-            if (tmpList.Count > 0)
+            if (tmpList.Count > 0 && RedKey==false)
             {
                 gameObject.GetComponent<AN_HeroController>().enabled = false;
                 gameObject.GetComponent<AN_HeroInteractive>().enabled = false;
