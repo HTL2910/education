@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -76,6 +77,12 @@ public class UIManager : MonoBehaviour
         {
             DeActiveDialog();
         }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+           
+             SceneManager.LoadScene("Login");
+            
+        }    
     }
 
     public void MyAnswer(Button button)
@@ -106,5 +113,6 @@ public class UIManager : MonoBehaviour
         dialogPanel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-    }    
+    }  
+    
 }

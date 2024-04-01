@@ -33,7 +33,9 @@ public class LoginManager: MonoBehaviour
 
     private void Start()
     {
-        if(loadingPanel.activeSelf)
+        Cursor.lockState = CursorLockMode.None; // freeze cursor on screen centre
+        Cursor.visible = true; // invisible cursor
+        if (loadingPanel.activeSelf)
         {
             loadingPanel.SetActive(false);
         }

@@ -25,7 +25,7 @@ public class AN_HeroInteractive : MonoBehaviour
         {
             if (tmpList.Count > 0 && RedKey == false && UIManager.instance.questionPanel.activeSelf == false && other.GetComponent<Door_Properties>().acitvePanel == false)
             {
-                other.GetComponent<Door_Properties>().acitvePanel = true;
+               
                 gameObject.GetComponent<AN_HeroController>().enabled = false;
                 gameObject.GetComponent<AN_HeroInteractive>().enabled = false;
                 availableStrings.Clear();
@@ -44,6 +44,7 @@ public class AN_HeroInteractive : MonoBehaviour
                 gameObject.GetComponent<AN_HeroInteractive>().enabled = true;
                 // freeze cursor on screen centre
                 tmpList.RemoveAt(indexQuizdata);
+                other.GetComponent<Door_Properties>().acitvePanel = true;
             }
         }   
     }
