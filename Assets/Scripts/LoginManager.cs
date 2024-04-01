@@ -13,6 +13,8 @@ public class LoginManager: MonoBehaviour
 
     public Sprite userNotActive;
     public Sprite userActive;
+    public GameObject tutorialPanel;
+
     [Header("Admin")]
     public Button adminButton;
     public GameObject adminPanel;
@@ -35,11 +37,19 @@ public class LoginManager: MonoBehaviour
         {
             loadingPanel.SetActive(false);
         }
+        if (tutorialPanel.activeSelf)
+        {
+            tutorialPanel.SetActive(false);
+        }
         
     }
     private void Update()
     {
         ChangeMode();
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            TutorialDeactive();
+        }
     }
     private void ChangeMode()
     {
@@ -74,8 +84,10 @@ public class LoginManager: MonoBehaviour
     }
     public void StartGame()
     {
+        loadingPanel.SetActive(true);
         SceneManager.LoadScene("PlayGame");
     }
+    
     public void ExitGame()
     {
         Application.Quit();
@@ -107,5 +119,13 @@ public class LoginManager: MonoBehaviour
     public void Again()
     {
         DialogFailedAdmin.SetActive(false);
+    }    
+    public void Tutorial()
+    {
+        tutorialPanel.SetActive(true);
+    }    
+    public void TutorialDeactive()
+    {
+        tutorialPanel.SetActive(false);
     }    
 }

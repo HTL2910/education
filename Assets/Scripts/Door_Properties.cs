@@ -8,7 +8,7 @@ public class Door_Properties : MonoBehaviour
     public bool activate;
     public bool toggleState;
     public GameObject icon;
-
+    public bool acitvePanel=false;
     void Update()
     {
         InputNear(KeyCode.E);

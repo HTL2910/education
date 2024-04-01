@@ -24,10 +24,15 @@ public class UIManager : MonoBehaviour
     public GameObject questionPanel;
 
     public TextMeshProUGUI rightAnswerText;
+    public TextMeshProUGUI countWrongAnswerText;
     public int countRightAnswer = 0;
+    public int countWrongAnswer = 0;
+    int countQuestion = 0; 
 
     private AN_HeroInteractive player;
-
+    [Header("Dialog")]
+    public GameObject dialogPanel;
+    public TextMeshProUGUI dialogText;
     private void Awake()
     {
         instance = this;
@@ -41,7 +46,11 @@ public class UIManager : MonoBehaviour
         {
             questionPanel.SetActive(false);
         }    
-
+        if(dialogPanel.activeSelf)
+        {
+            dialogPanel.SetActive(false);
+        }
+        countQuestion = GameManager.instance.listQuizData.Count;
     }
    
     public void AddOnClick()
@@ -61,24 +70,41 @@ public class UIManager : MonoBehaviour
 
         // Hiển thị thời gian dưới dạng "00:00".
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-        rightAnswerText.text="Điểm: "+ countRightAnswer+"/"+GameManager.instance.listQuizData.Count;
+        rightAnswerText.text="Điểm: "+ countRightAnswer+"/"+countQuestion;
+        countWrongAnswerText.text="Sai: "+countWrongAnswer+"/"+countQuestion;
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            DeActiveDialog();
+        }
     }
+
     public void MyAnswer(Button button)
     {
         yourAnswer =button.GetComponentInChildren<TMP_Text>().text;
         Debug.Log("answer: "+yourAnswer);
         questionPanel.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
+        dialogPanel.SetActive(true);
         if (yourAnswer.ToLower()==rightAnswer.ToLower())
         {
             countRightAnswer += 1;
             player.RedKey = true;
-
+            dialogText.text = "Câu trả lời chính xác!\n Nhấp E để mở cửa!";
         }    
         else
         {
+            countWrongAnswer += 1;
+            dialogText.text = "Câu trả lời không chính xác\n Hãy tìm chìa khoá!";
             player.RedKey = false;
-        }    
+        }
+        
+        
+    }    
+      
+    public void DeActiveDialog()
+    {
+        dialogPanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }    
 }

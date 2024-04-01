@@ -23,8 +23,9 @@ public class AN_HeroInteractive : MonoBehaviour
     {
         if(other.CompareTag("Door"))
         {
-            if (tmpList.Count > 0 && RedKey==false)
+            if (tmpList.Count > 0 && RedKey == false && UIManager.instance.questionPanel.activeSelf == false && other.GetComponent<Door_Properties>().acitvePanel == false)
             {
+                other.GetComponent<Door_Properties>().acitvePanel = true;
                 gameObject.GetComponent<AN_HeroController>().enabled = false;
                 gameObject.GetComponent<AN_HeroInteractive>().enabled = false;
                 availableStrings.Clear();
