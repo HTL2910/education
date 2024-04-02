@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
         {
             DeActiveDialog();
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.M))
         {
            
              SceneManager.LoadScene("Login");
