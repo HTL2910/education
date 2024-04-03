@@ -12,13 +12,23 @@ public class AN_HeroInteractive : MonoBehaviour
 
     List<string> availableStrings = new List<string>();
     List<QuizQuestion> tmpList=new List<QuizQuestion>();
-
+    bool lightIsActive = true;
     private void Start()
     {
         tmpList = GameManager.instance.listQuizData;
     }
 
-
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.F))
+        {
+            lightIsActive = !lightIsActive;
+            
+            gameObject.GetComponentInChildren<Light>().enabled = lightIsActive;
+            
+        }    
+        
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Door"))
