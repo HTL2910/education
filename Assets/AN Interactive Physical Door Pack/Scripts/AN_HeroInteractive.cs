@@ -57,6 +57,10 @@ public class AN_HeroInteractive : MonoBehaviour
                 other.GetComponent<Door_Properties>().acitvePanel = true;
             }
         }   
+        if(other.CompareTag("Book"))
+        {
+            Debug.Log("Book");
+        }    
     }
    
     private void RandomAnswer()
@@ -91,4 +95,16 @@ public class AN_HeroInteractive : MonoBehaviour
         availableStrings.RemoveAt(randomIndex);
         return randomString;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Trap"))
+        {
+            UIManager.instance.dieDialog.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
+    }
+    
+    
 }

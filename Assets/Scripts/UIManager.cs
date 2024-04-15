@@ -34,6 +34,9 @@ public class UIManager : MonoBehaviour
     [Header("Dialog")]
     public GameObject dialogPanel;
     public TextMeshProUGUI dialogText;
+    [Header("Die")]
+    public GameObject dieDialog;
+
     private void Awake()
     {
         instance = this;
@@ -48,6 +51,10 @@ public class UIManager : MonoBehaviour
             questionPanel.SetActive(false);
         }    
         if(dialogPanel.activeSelf)
+        {
+            dialogPanel.SetActive(false);
+        }
+        if (dieDialog.activeSelf)
         {
             dialogPanel.SetActive(false);
         }
@@ -114,5 +121,9 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }  
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }    
     
 }

@@ -12,6 +12,9 @@ TagManager:
   - Dialog
   - A
   - B
+  - Obstacle
+  - Trap
+  - Book
   layers:
   - Default
   - TransparentFX
