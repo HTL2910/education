@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,11 +21,28 @@ public class BookProperties : MonoBehaviour
             icon.SetActive(true);
             if (Input.GetKeyDown(keyCode))
             {
-                Debug.Log("active");
+                UIManager ui = UIManager.instance;
+                ui.knowdelgePanel.SetActive(true);
+                int randomIndex = Random.Range(0, ui.listSprite.Count);
+                ui.knowdelgeImage.sprite = ui.listSprite[randomIndex];
+                if (ui.listText[randomIndex] != string.Empty)
+                {
+                    ui.knowdelgeText.text = ui.listText[randomIndex];
+                }
+                else
+                {
+                    ui.knowdelgeText.text = "Sự thú vị của các con số";
+                }
+
+                ui.listText.RemoveAt(randomIndex);
+                ui.listSprite.RemoveAt(randomIndex);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
         }
         else
         {
+            
             icon.SetActive(false);
         }
     }

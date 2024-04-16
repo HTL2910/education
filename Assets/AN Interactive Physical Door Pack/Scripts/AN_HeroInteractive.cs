@@ -57,12 +57,9 @@ public class AN_HeroInteractive : MonoBehaviour
                 other.GetComponent<Door_Properties>().acitvePanel = true;
             }
         }   
-        if(other.CompareTag("Book"))
-        {
-            Debug.Log("Book");
-        }    
+          
     }
-   
+
     private void RandomAnswer()
     {
         UIManager.instance.AButton.GetComponentInChildren<TMP_Text>().text = GetUniqueRandomString();
