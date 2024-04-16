@@ -12,6 +12,10 @@ TagManager:
   - Dialog
   - A
   - B
+  - Obstacle
+  - Trap
+  - Book
+  - Treasure
   layers:
   - Default
   - TransparentFX

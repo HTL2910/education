@@ -1,0 +1,17 @@
+1 Định lý Pitago
+2 logarit
+3 Vi Tích Phân
+4. Định luật vạn vật hấp dẫn
+5. Số ảo i
+6. Đặc trưng Euler
+7. Phân phối chuẩn
+8.Phương trình sóng 
+9. Biến đổi Fourier
+10. Hệ phương trình Navier-Stokes
+11. Phương trình Maxwell
+12. Định luật II nhiệt động lực học
+13. Sự tương đương của khối lượng và năng lượng
+14. Phương trình Schorodinger
+15. Lý thuyết thông tin
+16. Lý thuyết hỗn loạn
+17.Phương trình Black-Scholes

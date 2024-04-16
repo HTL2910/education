@@ -1,0 +1,1 @@
+Số nguyên tố là tập hợp những số tự nhiên chỉ chia hết cho 1 và cho chính nó.

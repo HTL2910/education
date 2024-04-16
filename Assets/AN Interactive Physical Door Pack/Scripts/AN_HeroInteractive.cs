@@ -57,8 +57,9 @@ public class AN_HeroInteractive : MonoBehaviour
                 other.GetComponent<Door_Properties>().acitvePanel = true;
             }
         }   
+          
     }
-   
+
     private void RandomAnswer()
     {
         UIManager.instance.AButton.GetComponentInChildren<TMP_Text>().text = GetUniqueRandomString();
@@ -91,4 +92,16 @@ public class AN_HeroInteractive : MonoBehaviour
         availableStrings.RemoveAt(randomIndex);
         return randomString;
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Trap"))
+        {
+            UIManager.instance.dieDialog.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
+    }
+    
+    
 }

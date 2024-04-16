@@ -34,26 +34,56 @@ public class UIManager : MonoBehaviour
     [Header("Dialog")]
     public GameObject dialogPanel;
     public TextMeshProUGUI dialogText;
+    [Header("Die")]
+    public GameObject dieDialog;
+    [Header("Knowdelge")]
+    public GameObject knowdelgePanel;
+    public TextMeshProUGUI knowdelgeText;
+    public Image knowdelgeImage;
+    public List<string> listText=new List<string>();
+    public List<Sprite> listSprite=new List<Sprite>();
     private void Awake()
     {
         instance = this;
+        TextAsset[] textAssets = Resources.LoadAll<TextAsset>("Text");
+        Sprite[] spriteAsset = Resources.LoadAll<Sprite>("Image");
+     
+        foreach (TextAsset textAsset in textAssets)
+        {
+            listText.Add(textAsset.text);
+        }
+        foreach(Sprite sprite in spriteAsset)
+        {
+            listSprite.Add(sprite);
+        }    
+
+
     }
     void Start()
     {
         player=FindObjectOfType<AN_HeroInteractive>();
         startTime = Time.time;
         AddOnClick();
-        if (questionPanel.activeSelf)
-        {
-            questionPanel.SetActive(false);
-        }    
-        if(dialogPanel.activeSelf)
-        {
-            dialogPanel.SetActive(false);
-        }
+        Deactive(dialogPanel);
+        Deactive(dieDialog);
+        Deactive(questionPanel);
+        Deactive(knowdelgePanel);
+
         countQuestion = GameManager.instance.listQuizData.Count;
     }
-   
+    public void Deactive(GameObject Obj)
+    {
+        if(Obj.activeSelf)
+        {
+            Obj.SetActive(false);
+        }    
+    }    
+    public void KnowPanelDeactive()
+    {
+        Deactive(knowdelgePanel);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }    
     public void AddOnClick()
     {
         AButton.onClick.AddListener(() => MyAnswer(AButton));
@@ -84,7 +114,7 @@ public class UIManager : MonoBehaviour
             
         }    
     }
-
+    
     public void MyAnswer(Button button)
     {
         yourAnswer =button.GetComponentInChildren<TMP_Text>().text;
@@ -114,5 +144,9 @@ public class UIManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }  
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }    
     
 }
