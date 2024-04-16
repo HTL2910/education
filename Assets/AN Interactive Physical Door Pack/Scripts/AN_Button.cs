@@ -33,7 +33,7 @@ public class AN_Button : MonoBehaviour
 
     Animator anim;
 
-    // NearView()
+    
     float distance;
     float angleView;
     Vector3 direction;
@@ -52,17 +52,17 @@ public class AN_Button : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E) && !isValve && DoorObject != null && DoorObject.Remote && NearView()) // 1.lever and 2.button
             {
-                DoorObject.Action(); // void in door script to open/close
-                if (isLever) // animations
+                DoorObject.Action(); 
+                if (isLever) 
                 {
                     if (DoorObject.isOpened) anim.SetBool("LeverUp", true);
                     else anim.SetBool("LeverUp", false);
                 }
                 else anim.SetTrigger("ButtonPress");
             }
-            else if (isValve && RampObject != null) // 3.valve
+            else if (isValve && RampObject != null) 
             {
-                // changing value in script
+               
                 if (Input.GetKey(KeyCode.E) && NearView())
                 {
                     if (valveBool)
@@ -90,7 +90,7 @@ public class AN_Button : MonoBehaviour
                     valveBool = true;
                 }
 
-                // using value on object
+                
                 transform.rotation = startQuat * Quaternion.Euler(0f, 0f, current * ValveSpeed);
                 if (xRotation) RampObject.rotation = rampQuat * Quaternion.Euler(current, 0f, 0f); // I have a doubt in working correctly
                 else if (yPosition) RampObject.position = new Vector3(RampObject.position.x, startYPosition + current, RampObject.position.z);
