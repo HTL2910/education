@@ -15,6 +15,7 @@ TagManager:
   - Obstacle
   - Trap
   - Book
+  - Treasure
   layers:
   - Default
   - TransparentFX
