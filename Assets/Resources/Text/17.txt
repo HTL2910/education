@@ -1,0 +1,3 @@
+Fibonacci là dãy số kinh điển trong toán học được tìm thấy cách đây hơn 800 năm. Đến nay các nhà khoa học phát hiện nhiều trùng hợp thú vị về dãy số này trong tự nhiên.
+
+Dãy Fibonacci là dãy vô hạn các số tự nhiên bắt đầu bằng 1 và 1, sau đó các số tiếp theo sẽ bằng tổng của 2 số liền trước nó. 
