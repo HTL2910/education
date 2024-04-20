@@ -27,6 +27,10 @@ public class AN_HeroInteractive : MonoBehaviour
             gameObject.GetComponentInChildren<Light>().enabled = lightIsActive;
             
         }    
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            gameObject.transform.position = new Vector3(-11f, 1.6f, -85f);
+        }    
         
     }
     private void OnTriggerEnter(Collider other)
