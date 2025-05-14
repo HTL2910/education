@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -16,7 +15,7 @@ public class GameManager :MonoBehaviour
         {
 
             string jsonData = File.ReadAllText(PlayerPrefs.GetString("dataPath"));
-            listQuizData = JsonConvert.DeserializeObject<List<QuizQuestion>>(jsonData);
+            listQuizData = JsonUtility.FromJson<List<QuizQuestion>>(jsonData);
         }
         else
         {

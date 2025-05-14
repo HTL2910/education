@@ -63,8 +63,8 @@ public class AN_HeroController : MonoBehaviour
  
         moveVector = transform.forward * MoveSpeed * Input.GetAxis("Vertical") +
             transform.right * MoveSpeed * Input.GetAxis("Horizontal") +
-            transform.up * rb.velocity.y;
-        rb.velocity = moveVector;
+            transform.up * rb.linearVelocity.y;
+        rb.linearVelocity = moveVector;
 
         
     }

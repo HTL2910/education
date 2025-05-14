@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using System.IO;
 
 public class DataHandler : MonoBehaviour
@@ -16,7 +15,7 @@ public class DataHandler : MonoBehaviour
     public void SaveData(List<QuizQuestion> data)
     {
         // Chuyển đổi danh sách câu hỏi thành chuỗi JSON
-        string jsonData = JsonConvert.SerializeObject(data);
+        string jsonData = JsonUtility.ToJson(data);
         // Lưu chuỗi JSON vào tệp
         File.WriteAllText( DataManager.instance.dataSavePath, jsonData);
     }
@@ -29,7 +28,7 @@ public class DataHandler : MonoBehaviour
         {
             // Đọc dữ liệu từ tệp và chuyển đổi thành danh sách câu hỏi
             string jsonData = File.ReadAllText( DataManager.instance.dataSavePath);
-            data = JsonConvert.DeserializeObject<List<QuizQuestion>>(jsonData);
+            data = JsonUtility.FromJson<List<QuizQuestion>>(jsonData);
         }
         return data;
     }
